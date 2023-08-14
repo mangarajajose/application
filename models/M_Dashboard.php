@@ -11,12 +11,11 @@ class M_Dashboard extends CI_Model {
 
     // Get all data customer name 
     function get_data_customer(){
-        $this->db->group_by('customer_name');
-        $this->db->select('customer_name');
+        $this->db->group_by('name');
+        $this->db->select('name');
         $this->db->select("count(*) as total");
-        $this->db->where('customer_name !=', " ");
-        $this->db->where('draft =', "Send");
-        return $this->db->from('tb_input_problem')
+        $this->db->where('name !=', " ");
+        return $this->db->from('tb_dn2')
           ->get()
           ->result();
     }

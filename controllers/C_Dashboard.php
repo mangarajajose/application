@@ -81,6 +81,40 @@ class C_Dashboard extends CI_Controller {
         }
 
     }
+
+	function load_full_calender()
+	{
+		$event_data = $this->M_Dashboard->fetch_all_event_full_calender();
+		foreach($event_data->result_array() as $row)
+			{
+				$data[] = array(
+					'id' => $row['id'],
+					'title' => $row['title'],
+					'start' => $row['start_event'],
+					'end' => $row['end_event']
+				);
+			}
+		echo json_encode($data);
+	}
+
+
+
+	
+	function get_data_customer()
+	{
+		$event_data = $this->M_Dashboard->get_data_customer();
+		foreach($event_data->result_array() as $row)
+			{
+				$data[] = array(
+					'id' => $row['id'],
+					'title' => $row['title'],
+					'start' => $row['start_event'],
+					'end' => $row['end_event']
+				);
+			}
+		echo json_encode($data);
+	}
+
     
     
     /** ---------------------------------------------- /Employee----------------------------------------------**/
